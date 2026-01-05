@@ -1,0 +1,444 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    overflow-x: hidden;
+    font-family: 'Pretendard', sans-serif;
+}
+
+
+.bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    filter: blur(50px);
+    transition: 1.2s;
+}
+
+.bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: 1s;
+}
+
+.bg-image.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.bg-image.prev {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+body.active .bg-container {
+    filter: blur(0px);
+}
+
+.logo-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    z-index: 50;
+    transition: 1s;
+}
+/* 로고 컨테이너 내부의 a 태그 설정 */
+.logo-container a {
+    display: block;      /* 영역을 이미지 크기만큼 확보 */
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* 밑줄 방지 */
+    outline: none;         /* 클릭 시 생기는 테두리 방지 */
+}
+
+.logo-container img {
+    width: 100%;
+    display: block;
+    border: none;         /* 이미지 링크 시 생길 수 있는 테두리 제거 */
+    cursor: pointer;      /* 마우스를 올렸을 때 손가락 모양으로 변경 */
+}
+.logo-container.scrolled {
+    top: 40px;
+    left: 50px;
+    transform: translate(0, 0);
+    width: 160px;
+}
+
+
+.logo-placeholder {
+    position: absolute;
+    left: 0;
+    width: 160px; /* 로고가 올라올 자리 확보 */
+}
+
+
+
+.gnb img {
+    width: 1000px;
+    height: auto;
+    display: block;
+    cursor: pointer;       /* 마우스 포인터 변경 */
+    border: none;
+}
+
+
+.gnb_2 {
+    position: absolute;
+    right: 0; /* 우측 nav는 오른쪽 끝에 고정 */
+}
+
+.gnb_2 img {
+    width: 130px;
+}
+.bottom-icons {
+    position: fixed;
+    right: 80px;
+    bottom: 50px;
+    z-index: 100;
+    opacity: 0;
+    transition: 1s;
+    
+}
+
+body.active .bottom-icons {
+    opacity: 1;
+}
+
+.bottom-icons img {
+    width: 50px;
+}
+
+.header-nav-wrap {
+    position: fixed;
+    top: 40px;
+    left: 50px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* z-index를 45에서 2000 이상으로 올려주세요. 
+       footer가 2000이므로 그와 비슷하거나 더 높아야 합니다. */
+    z-index: 2100; 
+    opacity: 0;
+    transition: 0.8s;
+    /* 중요: 컨테이너 자체가 클릭을 막지 않도록 설정 (필요시) */
+    pointer-events: none; 
+}
+
+body.active .header-nav-wrap {
+    opacity: 1;
+    /* 활성화 되었을 때 내부 요소(a태그)는 클릭이 되어야 함 */
+    pointer-events: auto; 
+}
+
+.gnb {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    pointer-events: auto; /* 실제 클릭이 일어나는 부분 */
+}
+
+.gnb a {
+    display: inline-block; /* block보다 이미지 크기에 딱 맞게 조절 */
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 2110;
+}
+
+
+
+.gnb_2 img {
+    width: 130px;
+}
+
+/* 2. ì¤‘ê°„ ì»¨í…ì¸  */
+.content {
+    position: relative;
+    z-index: 5;
+    margin-top: 100vh;
+}
+
+.content-inner {
+    background: url('images/bgc1.png') no-repeat top center;
+    background-size: 1920px 1115px;
+    width: 100%;
+    height: 1115px;
+    position: relative;
+}
+
+.scroll-img {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: 1s;
+}
+
+.scroll-img.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.circle1 {
+    width: 180px;
+    top: 200px;
+    left: 45%;
+}
+
+.img-12 {
+    width: 303px;
+    top: 540px;
+    left: 20%;
+}
+
+.img-13 {
+    width: 1100px;
+    top: 310px;
+    left: 50%;
+    margin-left: -550px;
+}
+
+.img-14 {
+    width: 356px;
+    top: 460px;
+    right: 20%;
+}
+
+/* 3. ìºëŸ¬ì…€ ì„¹ì…˜ */
+.character-section {
+    position: relative;
+    width: 100%;
+    height: 1120px;
+    min-height: 900px;
+    background: #000;
+    overflow: hidden;
+}
+
+.character-bg {
+    position: absolute;
+    width: 1920px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('images/bgc2.png') no-repeat center;
+    background-size: cover;
+    z-index: 1;
+}
+
+.c-carousel-showcase__carousel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 500px;
+    perspective: 2500px;
+    /* ê¹Šì´ê° */
+    z-index: 10;
+}
+
+#carouselInner {
+    position: relative;
+    width: 220px;
+    height: 330px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.32, 1);
+}
+
+.c-3d-carousel__item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* 9ê°œì´ë¯€ë¡œ 40ë„ì”© íšŒì „ & translateZë¡œ ì›í˜• ë°°ì¹˜ */
+    transform: rotateY(calc(var(--i) * 40deg)) translateZ(500px);
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.actor-photo {
+    width: 100%;
+    height: 100%;
+    margin-top: 110px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.actor-name {
+    width: 75px;
+    margin-top: 25px;
+    filter: drop-shadow(0 5px 10px black);
+}
+
+.slider-control .c-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #C9B68C;
+    font-size: 50px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.prev {
+    left: 10%;
+}
+
+.next {
+    right: 10%;
+}
+
+.char-scroll-img {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, 50px);
+    transition: 1.2s;
+    z-index: 20;
+}
+
+.char-scroll-img.reveal {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.circle2 {
+    top: 130px;
+    width: 180px;
+}
+
+.artist-title {
+    bottom: 65px;
+    width: 400px;
+}
+
+/* 1. 섹션 전체 설정 */
+.bg3-content {
+    position: relative;
+    background: #000;
+    margin-top: 0;
+    padding: 0;
+}
+
+/* 2. 부모 컨테이너: 이 높이가 스크롤되는 전체 길이가 됩니다 */
+.bg3-inner {
+    position: relative;
+    width: 100%;
+    height: 4500px; /* 고정된 상태에서 아이템들이 지나갈 수 있도록 길게 설정 */
+    background: url('images/bgc3.png') no-repeat top center;
+    background-size: 1920px auto;
+}
+
+/* 3. [핵심] 고정될 레이어 */
+.sticky-container {
+    position: sticky;
+    top: 0;          /* 화면 최상단에 붙음 */
+    left: 0;
+    width: 100%;
+    height: 100vh;   /* 화면 높이만큼 고정 */
+    z-index: 100;    /* 아이템들보다 위에 있게 하거나 조절 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* 이 레이어가 뒤의 클릭을 막지 않도록 함 */
+}
+
+/* 고정 요소 상세 위치 */
+.sticky-container .circle3 {
+    position: absolute;
+    top: 100px;      /* 화면 상단에서 100px 지점 고정 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    z-index: 110;
+}
+
+.sticky-container .news-letter {
+    position: absolute;
+    top: 50%;        /* 화면 중앙 고정 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    z-index: 105;
+}
+
+/* 4. 위로 흘러갈 아이템들 레이어 */
+.scrolling-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;    /* 부모인 .bg3-inner의 4500px을 다 씀 */
+/*     z-index: 105;  */    /* 고정 요소보다 뒤에 배치 (앞으로 보낼 건 개별 설정) */
+}
+
+/* 아이템들 개별 위치 (스크롤에 따라 등장하도록) */
+.scrolling-items .scroll-img {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* reveal 클래스가 붙었을 때의 모습 */
+.scrolling-items .scroll-img.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 아이템들 배치 수치 (고정 요소 사이를 지나가게 배치) */
+.c1 { width: 550px; top: 1000px; left: 820px; } 
+.k1 { width: 92px; top: 1100px; left: 1260px; }
+
+.c2 { width: 437px; top: 1600px; left: 350px; }
+.k2 { width: 145px; top: 1670px; left: 390px; }
+
+.c3 { width: 420px; top: 2200px; left: 1100px; z-index: 1520; }
+.k3 { width: 100px; top: 2500px; left: 1070px; z-index: 1530; }
+
+/* 앞으로 지나가게 하고 싶은 아이템은 z-index를 sticky-container보다 높게 */
+.c4 { width: 450px; top: 3000px; left: 550px; z-index: 1500 !important; } 
+.k4 { width: 98px; top: 3340px; left: 920px; z-index: 1501 !important; }
+
+.c5 { width: 520px; top: 3800px; left: 1000px;  }
+.k5 { width: 145px; top: 4180px; left: 1080px;  }
+
+
+
+/* --- 푸터 (최상단) --- */
+.footer {
+    width: 100%;
+    height: 320px;
+    background: #000;
+    position: relative;
+    z-index: 2000; /* 모든 것보다 위 */
+}
+
+.footer-inner {
+    width: 100%;
+    height: 100%;
+    background: url('images/footer.png') no-repeat center center; /* 파일명 확인 필요 */
+    background-size: 1920px 320px; /* 요청하신 사이즈 강제 지정 */
+    margin: 0 auto;
+}
+
